@@ -54,3 +54,5 @@ We currently actuate the car at constant throttle. We could make the throttle a 
 #### Links that helped:
 
 https://discussions.udacity.com/t/how-to-gracefully-quit-the-onmessage-loop-event/643264/3
+
+Twiddle logic using switch case instead of for/while loop here helped: https://github.com/yjw16/CarND-PID-Control/blob/master/src/Twiddle.cpp
