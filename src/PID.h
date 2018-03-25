@@ -18,18 +18,20 @@ public:
   /*
   * Tuning variables
   */
-  double dp[3];
-  double tol;
-  double currentError;
-  double bestError;
-  int idx;
-  int N;
+  double dp[3]; //del coefficients
+  double tol; //tolerance
+  double currentError; //current iteration error
+  double bestError; //best error recorded
+  int idx; // sample index
+  int N; // total samples to process for an iteration
+  int tuneidx; // coefficient index
 
   /*
   * Flags
   */
-  bool windup;
-  int tuned;
+  bool windup; //tracks integrator windup
+  int tuned; //tracks tuned status 0 is uninitialized, 1 is initialized and tuning, 2 is tuned.
+  int phase; //to help with switch case in twiddle
 
   /*
   * Constructor
@@ -57,9 +59,15 @@ public:
   double TotalError();
 
   /*
-  * Update errors to zero for twiddle.
+  * Reset values for twiddle iteration.
   */
-  void ReinitErrors();
+  void Reset();
+
+  /*
+  * Perform parameter tuning for controller coefficients.
+  */
+  void Twiddle();
+
 };
 
 #endif /* PID_H */
